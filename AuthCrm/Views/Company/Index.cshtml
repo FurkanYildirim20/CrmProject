@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<CompanyDto>
+
+<div class="tab-content col-md-11">
+    <table class="table table-bordered text-center">
+        <tr>
+            <th>Firma Adı</th>
+            <th>Firma Yetkili</th>
+            <th>Firma Adresi</th>
+            <th>Şehir</th>
+            <th>Ülke</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Detaylar</th>
+            
+        </tr>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>@item.Name</td>
+        <td>
+            @{
+                var customer = @item.Customers.FirstOrDefault();
+            }
+            @customer?.Name
+        </td>
+        <td>@string.Join(", ", item.Adresses.Select(i => i.Text))</td>
+        <td>@string.Join(", ", item.Adresses.Select(i => i.City.Name))</td>
+        <td>@string.Join(", ", item.Adresses.Select(i => i.Country.Name))</td>
+
+        <td><a href="/Company/Delete/@item.Id" class="btn btn-danger">Sil</a></td>
+        <td><a href="/Company/Update/@item.Id" class="btn btn-success">Güncelle</a></td>
+        <td><a href="/Company/Detail/@item.Id" class="btn btn-info">Detaylar</a></td>
+    </tr>
+        }
+    </table>
+    <a asp-controller="Company" asp-action="Create" class="btn btn-primary">Yeni Firma Ekle</a>
+
+</div>

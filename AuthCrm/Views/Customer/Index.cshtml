@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<CustomerDto>
+
+<div class="tab-content col-md-11">
+    <table class="table table-bordered text-center">
+        <tr>
+            <th>Müşteri Adı Soyadı</th>
+            <th>Müşteri Numarası</th>
+            <th>Müşteri Email</th>
+            <th>Çalıştığı Firma Adı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Detaylar</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>@item.Name</td>
+        <td>@item.Gsm</td>
+        <td>@item.Email</td>
+        <td>@item.Company </td>
+        <td><a href="/Customer/Delete/@item.Id" class="btn btn-danger">Sil</a></td>
+        <td><a href="/Customer/Update/@item.Id" class="btn btn-success">Güncelle</a></td>
+        <td><a href="/Customer/Detail/@item.Id" class="btn btn-info">Detaylar</a></td>
+    </tr>
+        }
+    </table>
+    <a asp-controller="Customer" asp-action="Create" class="btn btn-primary">Yeni Müşteri Ekle</a>
+</div>

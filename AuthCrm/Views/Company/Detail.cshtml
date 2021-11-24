@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CompanyDto
+<div class="tab-content">
+    <table class="table table-bordered">
+        <tr>
+            <th>Firma Id</th>
+            <th>Firma Adı</th>
+            <th>Firma Yetkili</th>
+            <th>Adres</th>
+            <th>Şehir</th>
+            <th>Ülke</th>
+        </tr>
+
+        <tr>
+            @*<td>@item.Id</td>
+        <td>@item.Name</td>*@
+            <td>@Html.TextBoxFor(result => result.Id, new { @class = "form-control " })</td>
+            <td>@Html.TextBoxFor(result => result.Name, new { @class = "form-control " })</td>
+            <td>
+                <select>
+                    @foreach (var item in @Model.Customers)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </td>
+            <td>
+                <select>
+                    @foreach (var item in @Model.Adresses)
+                    {
+                        <option value="@item.Id">@item.Text</option>
+                    }
+                </select>
+            </td>
+            @*<td>@string.Join(", ", item.Adresses.Select(i => i.City.Name))</td>*@
+            <td>@string.Join(", ", Model.Adresses.Select(i => i.Country.Name))</td>
+            @*<td>
+            <select>
+                @foreach (var item in @Model.Cities)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </td>*@
+            @*<td>
+            <select>
+                @foreach (var item in @Model.Countries)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </td>*@
+            @*<td>@string.Join(", ", ITempDataDictionary.Adresses.Select(i => i.Text))</td>
+        <td>@string.Join(", ", item.Adresses.Select(i => i.City.Name))</td>
+        <td>@string.Join(", ", item.Adresses.Select(i => i.Country.Name))</td>*@
+        </tr>
+
+        @*<tr>
+            <td>@Html.TextBoxFor(result => result.Customers, new { @class = "form-control " })</td>
+                <th>@Html.TextBoxFor(result => result.Adresses, new { @class = "form-control " })</th>
+                <th>@Html.TextBoxFor(result => result.Cities, new { @class = "form-control " })</th>
+                <th>@Html.TextBoxFor(result => result.Countries, new { @class = "form-control " })</th>
+            </tr>*@
+    </table>
+    <a asp-controller="Company" asp-action="Index" class="btn btn-primary" style="background-color:#808080">Geri</a>
+
+</div>

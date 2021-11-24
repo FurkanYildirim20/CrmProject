@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CustomerDto
+
+<div class="container-fluid">
+    <div class="tab-content">
+        <table class="table table-bordered">
+            <tr>
+                <th>Müşteri Id</th>
+                <th>Müşteri Adı Soyadı</th>
+                <th>Müşteri Numarası</th>
+                <th>Müşteri Email</th>
+                <th>Çalıştığı Firma Adı</th>
+            </tr>
+            <tr>
+                
+                <th>@Html.ViewData.Model.Id</th>
+                <th>@Html.ViewData.Model.Name</th>
+                <th>@Html.ViewData.Model.Gsm</th>
+                <th>@Html.ViewData.Model.Email</th>
+                <th>@Html.ViewData.Model.Company</th>
+            </tr>
+        </table>
+        @*<a asp-controller="Customer" asp-action="Create" class="btn btn-primary" style="background-color:#0094ff">Kaydet</a>*@
+        <a class="btn btn-secondary" asp-controller="Customer" asp-action="Index">Geri</a>
+
+    </div>
+</div>

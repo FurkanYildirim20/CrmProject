@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model CustomerDto
+
+<div class="container-fluid">
+    <div class="tab-content col-md-9">
+        <form id="UpdateCustomerForm" asp-controller="Customer" asp-action="Update" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="@Model.Id" />
+            <table class="table table-bordered">
+                <tr>
+                    <th>Müşteri Adı Soyadı</th>
+                    <th>Müşteri Numarası</th>
+                    <th>Müşteri Email</th>
+                    <th>Çalıştığı Firma</th>
+                </tr>
+                <tr>
+                    <th>@Html.TextBoxFor(result => result.Name, new { @class = "form-control " })</th>
+                    <th>@Html.TextBoxFor(result => result.Gsm, new { @class = "form-control " })</th>
+                    <th>@Html.TextBoxFor(result => result.Email, new { @class = "form-control " })</th>
+                    <th>@Html.DropDownListFor(x => x.Id, (List<SelectListItem>)ViewBag.Companies, new { @class = "form-control" })</th>
+                </tr>
+            </table>
+        </form>
+        @*<a asp-controller="Customer" asp-action="Index" class="btn btn-primary" style="background-color:#0094ff">Kaydet</a>*@
+        <div class="card-footer">
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit" form="UpdateCustomerForm">Kaydet</button>
+                <a class="btn btn-secondary" asp-controller="Customer" asp-action="Index">Geri</a>
+            </div>
+        </div>
+    </div>
+</div>

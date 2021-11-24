@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model CompanyDto
+
+
+<div class="tab-content col-md">
+    <form id="UpdateCompanyForm" asp-controller="Company" asp-action="Update" method="post" enctype="multipart/form-data">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Firma Adı</th>
+                    <th>Firma Adresi</th>
+                    <th>Firma Şehir</th>
+                    <th>Firma Ülke</th>
+                    <th>Firma Temsilci</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                    @*<td>@item.Name</td>
+                        <td>
+                            @{
+                                var customer = @item.Customers.FirstOrDefault();
+                            }
+                            @customer?.Name
+                        </td>
+                        <td>@string.Join(", ", item.Adresses.Select(i => i.Text))</td>
+                        <td>@string.Join(", ", item.Adresses.Select(i => i.City.Name))</td>
+                        <td>@string.Join(", ", item.Adresses.Select(i => i.Country.Name))</td>*@
+
+                    <td>@Html.TextBoxFor(result => result.Name, new { @class = "form-control " })</td>
+                    <td>@string.Join(", ", Model.Adresses.Select(i => i.Text)) </td>
+                    <td>@Html.TextBoxFor(result => result.Customers, new { @class = "form-control " })</td>
+                    <td>
+                        <select>
+                            @foreach (var item in @Model.Cities)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Firma Adı</th>
+                    <th>Firma Adresi</th>
+                    <th>Firma Şehir</th>
+                    <th>Firma Ülke</th>
+                    <th>Firma Temsilci</th>
+                </tr>
+            </tfoot>
+        </table>
+    </form>
+    <div class="card-footer">
+        <div class="form-group">
+            <br />
+            <button class="btn btn-primary" type="submit" form="UpdateCompanyForm">Kaydet</button>
+            <a class="btn btn-secondary" asp-controller="Company" asp-action="Index">Geri</a>
+        </div>
+    </div>
+    @*<a asp-controller="Company" asp-action="Index" class="btn btn-primary" style="background-color:#0094ff">Kaydet</a>*@
+</div>
